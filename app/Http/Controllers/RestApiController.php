@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\RestApi;
+use App\User;
 use Illuminate\Http\Request;
 
 class RestApiController extends Controller
@@ -12,9 +13,23 @@ class RestApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getData()
     {
-        //
+        return User::all();
+    }
+
+    public function postData(Request $request)
+    {
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+        if($user->save())
+        {
+            return ['status'=>'data inserted'];
+        }
     }
 
     /**
