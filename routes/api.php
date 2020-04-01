@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/getData', 'RestApiController@getData');
 Route::post('/postData', 'RestApiController@postData');
+//test file added
